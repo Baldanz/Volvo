@@ -116,11 +116,10 @@ namespace Volvo.WebAPI.Controllers
             // bloco de tratamento de exceção
             try
             {
-                var lista = new MensagemLista<CaminhaoViewModel>(EMensagem.Sucesso, new System.Diagnostics.StackFrame(0).GetMethod().Name)
+                return new MensagemLista<CaminhaoViewModel>(EMensagem.Sucesso, new System.Diagnostics.StackFrame(0).GetMethod().Name)
                 {
                     Lista = _mapper.Map<IEnumerable<CaminhaoViewModel>>(_query.GetAll("MODELO IN ('FM', 'FH') "))
                 };
-                return lista;
             }
             catch (SqlException sqlEx)
             {
